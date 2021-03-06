@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop/Login.dart';
+import 'Register.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -44,7 +46,10 @@ class _WelcomePageState extends State<WelcomePage> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(70.0, 10.0, 0.0, 0.0),
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) => Login()));
+                      },
                       color: Colors.black54,
                       child: Text(
                         "Login",
@@ -59,7 +64,10 @@ class _WelcomePageState extends State<WelcomePage> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(55.0, 10.0, 0.0, 0.0),
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) => Register()));
+                      },
                       color: Colors.black54,
                       child: Text(
                         "Register",
