@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'placeholder_widget.dart';
+import 'package:shop/MyCart.dart';
+String item1 = "Iphone 12 Pro";
+String item2 = "Iphone 12 Pro Max";
+String item3 = "Samsung Galaxy S21 Ultra";
+String item4 = "One Plus 8 Pro";
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
   int _currentIndex = 0;
   final List<Widget> _children = [
     _home(),
@@ -73,11 +80,11 @@ Widget _home() {
     body: ListView(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.fromLTRB(15.0,5.0,15.0,15.0),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(5.0),
             child: Container(
-              height: 450.0,
+              height: 500.0,
               margin: const EdgeInsets.only(bottom: 6.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5.0),
@@ -101,17 +108,28 @@ Widget _home() {
                       child: Align(
                         alignment: FractionalOffset.bottomCenter,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.fromLTRB(8.0,0.0,5.0,8.0),
                           child: Row(
                             children: [
                               Container(
-                                height: 150.0,
+                                height: 180.0,
                                 width: 310.0,
                                 color: Colors.orange.shade50,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.fromLTRB(13.0,0.0,0.0,0.0),
                                   child: Column(
                                     children: <Widget>[
+                                      Text(
+                                        "$item1",
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black87,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5.0,
+                                      ),
                                       Text(
                                         "MRP: 20,000 Rupees",
                                         style: TextStyle(
@@ -166,7 +184,7 @@ Widget _home() {
 
 void handleClick(String value) {
   switch (value) {
-    case 'Logout': 
+    case 'Logout':
       break;
   }
 }
@@ -184,6 +202,7 @@ Widget _myCart() {
         ),
       ),
     ),
+    body: cart(),
   );
 }
 
