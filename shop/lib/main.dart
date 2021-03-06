@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop/HomePage.dart';
+import 'package:shop/Login.dart';
 import 'package:shop/WelcomePage.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.orange,
       ),
-      home: HomePage(),
+      home: Login(),
     );
   }
 }
