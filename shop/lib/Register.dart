@@ -56,7 +56,16 @@ class _State extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('SignUp'),
+          backgroundColor: Colors.yellow,
+          centerTitle: true,
+          title: Text(
+            "Quick Shop",
+            style: TextStyle(
+              fontSize: 23.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
         ),
         body: Padding(
             padding: EdgeInsets.all(10),
@@ -66,9 +75,9 @@ class _State extends State<Register> {
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      'My Thought',
+                      'Register',
                       style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.black54,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
@@ -114,13 +123,24 @@ class _State extends State<Register> {
                     ),
                   ),
                 ),
+
+                SizedBox(
+                  height: 20.0,
+                ),
                 Container(
                     height: 50,
-                    padding: EdgeInsets.fromLTRB(10, 16, 10, 0),
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
                     child: RaisedButton(
-                      textColor: Colors.white,
-                      color: Colors.blue,
-                      child: Text('SignUp'),
+                      textColor: Colors.black,
+                      color: Colors.yellow.shade800,
+                      child: Text(
+                      "Register me",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
                       onPressed: () {
                         print(emailController.text);
                         print(passwordController.text);
@@ -145,7 +165,9 @@ class _State extends State<Register> {
                           textColor: Colors.blue,
                           child: Text(
                             'Login',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 22.0,
+                            color: Colors.black54,
+                            ),
                           ),
                           onPressed: () {
                             Navigator.pushReplacement(

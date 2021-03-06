@@ -166,7 +166,7 @@ Widget _home() {
 
 void handleClick(String value) {
   switch (value) {
-    case 'Logout':
+    case 'Logout': 
       break;
   }
 }

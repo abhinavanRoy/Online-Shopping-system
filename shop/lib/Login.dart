@@ -60,7 +60,7 @@ class _State extends State<Login> {
                     child: Text(
                       'Login',
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.black54,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
