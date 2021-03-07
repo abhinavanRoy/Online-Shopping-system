@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.orange,
       ),
-      home: test(),
+      home: rootPage(),
     );
   }
 }
