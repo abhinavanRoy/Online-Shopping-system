@@ -2,22 +2,25 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:shop/OrderConfirmPage.dart';
 import 'package:shop/testHome.dart';
 import 'Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/HomePage.dart';
 
-class BuyPage extends StatefulWidget {
+String name, emailId, address, state, phoneNo, pincode;
 
-  String itemname,price;
-  BuyPage({Key key, @required this.itemname,@required this.price}) : super(key: key);
+class BuyPage extends StatefulWidget {
+  String itemname, price;
+  BuyPage({Key key, @required this.itemname, @required this.price})
+      : super(key: key);
   @override
-  State<StatefulWidget> createState() => new _State(itemname,price);
+  State<StatefulWidget> createState() => new _State(itemname, price);
 }
 
 class _State extends State<BuyPage> {
-  String itemname,price;
-  _State(this.itemname,this.price);
+  String itemname, price;
+  _State(this.itemname, this.price);
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
@@ -161,20 +164,66 @@ class _State extends State<BuyPage> {
                       textColor: Colors.black,
                       color: Colors.yellow.shade800,
                       child: Text(
-                        "Choose Payment Mode",
+                        "Next",
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 23.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
                         ),
                       ),
                       onPressed: () {
-
-
-
+                        if (nameController.text.isNotEmpty &&
+                            emailController.text.isNotEmpty &&
+                            stateController.text.isNotEmpty &&
+                            addressController.text.isNotEmpty &&
+                            phoneNumberController.text.isNotEmpty &&
+                            pincodeController.text.isNotEmpty) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      OrderConfirmPage(
+                                        itemname: itemname,
+                                        price: price,
+                                        name: nameController.text,
+                                        emailId: emailController.text,
+                                        phoneNo: phoneNumberController.text,
+                                        address: addressController.text,
+                                        state: stateController.text,
+                                        pincode: pincodeController.text,
+                                      )));
+                        }
+                        else{
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => _buildPopupDialog(context),
+                          );
+                        }
                       },
                     )),
               ],
             )));
   }
+}
+
+Widget _buildPopupDialog(BuildContext context) {
+  return new AlertDialog(
+    title: const Text('Entry error!'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("Fields cannot be empty"),
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: const Text('Close'),
+      ),
+    ],
+  );
 }

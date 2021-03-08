@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop/BuyPage.dart';
 import 'package:shop/HomePage.dart';
 import 'package:shop/Login.dart';
+import 'package:shop/OrderConfirmPage.dart';
 import 'package:shop/WelcomePage.dart';
 import 'package:shop/testHome.dart';
 import 'package:firebase_core/firebase_core.dart';
