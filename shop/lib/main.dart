@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/BuyPage.dart';
 import 'package:shop/HomePage.dart';
 import 'package:shop/Login.dart';
 import 'package:shop/WelcomePage.dart';

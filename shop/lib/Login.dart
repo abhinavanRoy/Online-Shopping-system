@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shop/Register.dart';
+import 'package:shop/testHome.dart';
 import 'HomePage.dart';
 
 class Login extends StatefulWidget {
@@ -107,7 +108,7 @@ class _State extends State<Login> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                                builder: (context) => rootPage()));
                       },
                     )),
                 Container(

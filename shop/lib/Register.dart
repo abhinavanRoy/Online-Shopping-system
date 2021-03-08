@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:shop/testHome.dart';
 import 'Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/HomePage.dart';
@@ -148,7 +149,7 @@ class _State extends State<Register> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                                  builder: (context) => rootPage()));
                         } else {
                           _showErrorDailog("Password do not match!");
                         }

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shop/BuyPage.dart';
 
 String item1 = "Iphone 12 Pro";
 String item2 = "Iphone 12 Pro Max";
@@ -50,7 +51,7 @@ class _rootPageState extends State<rootPage> {
                     }
                     return Column(
                       children: snapshot.data.docs.map((document) {
-                        return itemCard1(document);
+                        return itemCard1(document,context);
                       }).toList(),
                     );
 
@@ -70,7 +71,7 @@ class _rootPageState extends State<rootPage> {
                     }
                     return Column(
                       children: snapshot.data.docs.map((document) {
-                        return itemCard2(document);
+                        return itemCard2(document,context);
                       }).toList(),
                     );
 
@@ -90,7 +91,7 @@ class _rootPageState extends State<rootPage> {
                     }
                     return Column(
                       children: snapshot.data.docs.map((document) {
-                        return itemCard3(document);
+                        return itemCard3(document,context);
                       }).toList(),
                     );
 
@@ -110,7 +111,7 @@ class _rootPageState extends State<rootPage> {
                     }
                     return Column(
                       children: snapshot.data.docs.map((document) {
-                        return itemCard4(document);
+                        return itemCard4(document,context);
                       }).toList(),
                     );
 
@@ -128,7 +129,7 @@ class _rootPageState extends State<rootPage> {
   }
 }
 
-Widget itemCard1(document) {
+Widget itemCard1(document,context) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 15.0),
     child: ClipRRect(
@@ -198,7 +199,17 @@ Widget itemCard1(document) {
                                   minWidth: 290.0,
                                   height: 45.0,
                                   child: RaisedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      String itemname,price;
+                                      itemname = "Iphone 12";
+                                      price = "₹ 20,000";
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+
+
+                                    },
                                     child: Text("Buy Now"),
                                   ),
                                 ),
@@ -229,7 +240,7 @@ Widget itemCard1(document) {
     ),
   );
 }
-Widget itemCard2(document) {
+Widget itemCard2(document,context) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 15.0),
     child: ClipRRect(
@@ -299,7 +310,15 @@ Widget itemCard2(document) {
                                   minWidth: 290.0,
                                   height: 45.0,
                                   child: RaisedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      String itemname,price;
+                                      itemname = "Iphone 12 Pro Max";
+                                      price = "₹ 20,000";
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+                                    },
                                     child: Text("Buy Now"),
                                   ),
                                 ),
@@ -330,7 +349,7 @@ Widget itemCard2(document) {
     ),
   );
 }
-Widget itemCard3(document) {
+Widget itemCard3(document,context) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 15.0),
     child: ClipRRect(
@@ -400,7 +419,15 @@ Widget itemCard3(document) {
                                   minWidth: 290.0,
                                   height: 45.0,
                                   child: RaisedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      String itemname,price;
+                                      itemname = "Samsung S21 Ultra";
+                                      price = "₹ 20,000";
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+                                    },
                                     child: Text("Buy Now"),
                                   ),
                                 ),
@@ -431,7 +458,7 @@ Widget itemCard3(document) {
     ),
   );
 }
-Widget itemCard4(document) {
+Widget itemCard4(document,context) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 15.0),
     child: ClipRRect(
@@ -501,7 +528,15 @@ Widget itemCard4(document) {
                                   minWidth: 290.0,
                                   height: 45.0,
                                   child: RaisedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      String itemname,price;
+                                      itemname = "OnePlus 8 Pro";
+                                      price = "₹ 20,000";
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+                                    },
                                     child: Text("Buy Now"),
                                   ),
                                 ),
