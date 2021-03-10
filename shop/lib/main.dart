@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shop/BuyPage.dart';
-import 'package:shop/HomePage.dart';
-import 'package:shop/Login.dart';
-import 'package:shop/OrderConfirmPage.dart';
-import 'package:shop/WelcomePage.dart';
-import 'package:shop/testHome.dart';
-import 'package:firebase_core/firebase_core.dart';
 
-void main() async{
+import 'package:shop/MyCart.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:shop/OrderConfirmPage.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -20,10 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '',
       theme: ThemeData(
-
         primarySwatch: Colors.orange,
       ),
-      home: rootPage(),
+      home: BuyPage(),
     );
   }
 }

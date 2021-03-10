@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class OrderConfirmPage extends StatefulWidget {
-  String itemname, price, name, emailId, address, state, phoneNo,pincode;
+  String itemname, price, name, emailId, address, state, phoneNo, pincode;
   OrderConfirmPage({
     Key key,
     @required this.itemname,
@@ -12,15 +12,16 @@ class OrderConfirmPage extends StatefulWidget {
     @required this.address,
     @required this.state,
     @required this.pincode,
-
   }) : super(key: key);
   @override
-  _OrderConfirmPageState createState() => _OrderConfirmPageState(itemname, price, name, emailId,phoneNo, address, state,pincode);
+  _OrderConfirmPageState createState() => _OrderConfirmPageState(
+      itemname, price, name, emailId, phoneNo, address, state, pincode);
 }
 
 class _OrderConfirmPageState extends State<OrderConfirmPage> {
-  String itemname, price, name, emailId, address, state, phoneNo,pincode;
-  _OrderConfirmPageState(this.itemname,this.price,this.name,this.emailId,this.phoneNo,this.address,this.state,this.pincode);
+  String itemname, price, name, emailId, address, state, phoneNo, pincode;
+  _OrderConfirmPageState(this.itemname, this.price, this.name, this.emailId,
+      this.phoneNo, this.address, this.state, this.pincode);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,7 +106,6 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
                                             ),
                                           ),
                                         ),
-
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
@@ -165,6 +165,17 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
                 ),
               ),
             ),
+          ),
+          RaisedButton(
+            color: Colors.yellow,
+            onPressed: () {},
+            child: Text(
+              "Place Order",
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+
           ),
         ],
       ),

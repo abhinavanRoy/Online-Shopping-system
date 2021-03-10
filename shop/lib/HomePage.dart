@@ -142,36 +142,3 @@ class _HomePageState extends State<HomePage> {
 }
 
 
-Widget _myCart() {
-  return Scaffold(
-    appBar: AppBar(
-      centerTitle: true,
-      backgroundColor: Colors.yellow,
-      title: Text(
-        "My Cart",
-        style: TextStyle(
-
-          color: Colors.black,
-          fontSize: 23.0,
-        ),
-      ),
-    ),
-    body: cart(),
-  );
-}
-
-Widget _myOrder() {
-  return Scaffold(
-    appBar: AppBar(
-      centerTitle: true,
-      backgroundColor: Colors.yellow,
-      title: Text(
-        "My Orders",
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 23.0,
-        ),
-      ),
-    ),
-  );
-}

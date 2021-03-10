@@ -19,6 +19,8 @@ class BuyPage extends StatefulWidget {
 }
 
 class _State extends State<BuyPage> {
+  bool valuefirst = false;
+  bool valuesecond = false;
   String itemname, price;
   _State(this.itemname, this.price);
   TextEditingController nameController = TextEditingController();
@@ -156,6 +158,39 @@ class _State extends State<BuyPage> {
                 ),
                 SizedBox(
                   height: 20.0,
+                ),
+
+                 Padding(
+                   padding: const EdgeInsets.all(9.0),
+                   child: Text("Select your payment mode",
+                   style: TextStyle(
+                     fontSize: 20.0,
+                     fontWeight: FontWeight.bold,
+                   ),
+
+                   ),
+                 ),
+                CheckboxListTile(
+                  title: Text("Pay On Delivery"),
+                  checkColor: Colors.yellow,
+                  activeColor: Colors.red,
+                  value: this.valuefirst,
+                  onChanged: (bool value) {
+                    setState(() {
+                      this.valuefirst = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: Text("Google pay"),
+                  checkColor: Colors.yellow,
+                  activeColor: Colors.red,
+                  value: this.valuefirst,
+                  onChanged: (bool value) {
+                    setState(() {
+                      this.valuefirst = value;
+                    });
+                  },
                 ),
                 Container(
                     height: 50,
