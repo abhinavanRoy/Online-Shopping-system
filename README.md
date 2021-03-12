@@ -1,2 +1,2 @@
 # Online-Shopping-system
-Just a flutter made app. :-)
+Work in progress. Feel free to contribute.
