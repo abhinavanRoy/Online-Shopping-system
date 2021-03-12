@@ -19,6 +19,7 @@ class OrderConfirmPage extends StatefulWidget {
 }
 
 class _OrderConfirmPageState extends State<OrderConfirmPage> {
+  final ScrollController _scrollController = ScrollController();
   String itemname, price, name, emailId, address, state, phoneNo, pincode;
   _OrderConfirmPageState(this.itemname, this.price, this.name, this.emailId,
       this.phoneNo, this.address, this.state, this.pincode);
@@ -37,147 +38,159 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
           ),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Text(
-              'Your order details',
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 30),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Text(
+                'Your order details',
+                style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 30),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(15.0, 30.0, 15.0, 15.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5.0),
-              child: Container(
-                height: 600.0,
-                margin: const EdgeInsets.only(bottom: 6.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  color: Colors.yellow.shade50,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(0.0, 1.0), //(x,y)
-                      blurRadius: 6.0,
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Align(
-                          alignment: FractionalOffset.bottomCenter,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(8.0, 0.0, 5.0, 8.0),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 550.0,
-                                  width: 310.0,
-                                  color: Colors.yellow.shade50,
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        0.0, 0.0, 140.0, 0.0),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Product name: " + "$itemname",
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15.0, 30.0, 15.0, 15.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5.0),
+                child: Container(
+                  height: 600.0,
+                  margin: const EdgeInsets.only(bottom: 6.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.yellow.shade50,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 6.0,
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Align(
+                            alignment: FractionalOffset.bottomCenter,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(8.0, 0.0, 5.0, 8.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 550.0,
+                                    width: 310.0,
+                                    color: Colors.yellow.shade50,
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          0.0, 0.0, 140.0, 0.0),
+                                      child: Scrollbar(
+                                        isAlwaysShown: false,
+                                        controller: _scrollController,
+                                        child: ListView(
+                                          controller: _scrollController,
+
+                                          children: <Widget> [
+                                            Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Product name: " + "$itemname",
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Customer Name: " + "$name",
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Email: " + "$emailId",
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Phone No: " + "$phoneNo",
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Address: " + "$address",
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "State: " + "$state",
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Pincode: " + "$pincode",
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Customer Name: " + "$name",
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Email: " + "$emailId",
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Phone No: " + "$phoneNo",
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Address: " + "$address",
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "State: " + "$state",
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Pincode: " + "$pincode",
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
                               ],
+                                        ),
+                                      ),
+
+                                  ),
+                                  ),],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          RaisedButton(
-            color: Colors.yellow,
-            onPressed: () {},
-            child: Text(
-              "Place Order",
-              style: TextStyle(
-                fontSize: 20.0,
+            RaisedButton(
+              color: Colors.yellow,
+              onPressed: () {},
+              child: Text(
+                "Place Order",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
+          ],
 
-          ),
-        ],
+        ),
       ),
     );
   }

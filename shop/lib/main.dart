@@ -5,6 +5,7 @@ import 'package:shop/MyCart.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shop/OrderConfirmPage.dart';
+import 'package:shop/WelcomePage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: BuyPage(),
+      home: WelcomePage(),
     );
   }
 }
