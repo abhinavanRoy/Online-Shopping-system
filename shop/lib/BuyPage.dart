@@ -1,17 +1,14 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:shop/OrderConfirmPage.dart';
-import 'package:shop/testHome.dart';
-import 'Login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shop/HomePage.dart';
 
 String name, emailId, address, state, phoneNo, pincode;
 
 class BuyPage extends StatefulWidget {
-  String itemname, price;
+  final itemname, price;
+
   BuyPage({Key key, @required this.itemname, @required this.price})
       : super(key: key);
   @override
@@ -19,6 +16,7 @@ class BuyPage extends StatefulWidget {
 }
 
 class _State extends State<BuyPage> {
+  String paymentMethod = "";
   bool valuefirst = false;
   bool valuesecond = false;
   String itemname, price;
@@ -159,17 +157,16 @@ class _State extends State<BuyPage> {
                 SizedBox(
                   height: 20.0,
                 ),
-
-                 Padding(
-                   padding: const EdgeInsets.all(9.0),
-                   child: Text("Select your payment mode",
-                   style: TextStyle(
-                     fontSize: 20.0,
-                     fontWeight: FontWeight.bold,
-                   ),
-
-                   ),
-                 ),
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child: Text(
+                    "Select your payment mode",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
                 CheckboxListTile(
                   title: Text("Pay On Delivery"),
                   checkColor: Colors.yellow,
@@ -178,6 +175,8 @@ class _State extends State<BuyPage> {
                   onChanged: (bool value) {
                     setState(() {
                       this.valuefirst = value;
+                      paymentMethod = "Pay On Delivery";
+
                     });
                   },
                 ),
@@ -185,10 +184,12 @@ class _State extends State<BuyPage> {
                   title: Text("Google pay"),
                   checkColor: Colors.yellow,
                   activeColor: Colors.red,
-                  value: this.valuefirst,
+                  value: this.valuesecond,
                   onChanged: (bool value) {
+
                     setState(() {
-                      this.valuefirst = value;
+                      this.valuesecond = value;
+                      paymentMethod = "Google pay";
                     });
                   },
                 ),
@@ -213,25 +214,12 @@ class _State extends State<BuyPage> {
                             addressController.text.isNotEmpty &&
                             phoneNumberController.text.isNotEmpty &&
                             pincodeController.text.isNotEmpty) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      OrderConfirmPage(
-                                        itemname: itemname,
-                                        price: price,
-                                        name: nameController.text,
-                                        emailId: emailController.text,
-                                        phoneNo: phoneNumberController.text,
-                                        address: addressController.text,
-                                        state: stateController.text,
-                                        pincode: pincodeController.text,
-                                      )));
-                        }
-                        else{
+                          Navigator.of(context).push(_createRoute());
+                        } else {
                           showDialog(
                             context: context,
-                            builder: (BuildContext context) => _buildPopupDialog(context),
+                            builder: (BuildContext context) =>
+                                _buildPopupDialog(context),
                           );
                         }
                       },
@@ -239,7 +227,27 @@ class _State extends State<BuyPage> {
               ],
             )));
   }
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => OrderConfirmPage(itemname: itemname, price: price, name: name, emailId: emailId, phoneNo: phoneNo, address: address, state: state, pincode: pincode, paymentMethod: paymentMethod),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
 }
+
+
+
 
 Widget _buildPopupDialog(BuildContext context) {
   return new AlertDialog(

@@ -9,6 +9,7 @@ String item1 = "Iphone 12 Pro";
 String item2 = "Iphone 12 Pro Max";
 String item3 = "Samsung Galaxy S21 Ultra";
 String item4 = "One Plus 8 Pro";
+String itemname,price;
 
 var count = 0;
 class rootPage extends StatefulWidget {
@@ -200,13 +201,10 @@ Widget itemCard1(document,context) {
                                   height: 45.0,
                                   child: RaisedButton(
                                     onPressed: () {
-                                      String itemname,price;
+
                                       itemname = "Iphone 12";
                                       price = "₹ 20,000";
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+                                      Navigator.of(context).push(_createRoute());
 
 
                                     },
@@ -311,13 +309,10 @@ Widget itemCard2(document,context) {
                                   height: 45.0,
                                   child: RaisedButton(
                                     onPressed: () {
-                                      String itemname,price;
+
                                       itemname = "Iphone 12 Pro Max";
                                       price = "₹ 20,000";
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+                                      Navigator.of(context).push(_createRoute());
                                     },
                                     child: Text("Buy Now"),
                                   ),
@@ -420,13 +415,10 @@ Widget itemCard3(document,context) {
                                   height: 45.0,
                                   child: RaisedButton(
                                     onPressed: () {
-                                      String itemname,price;
+                                    
                                       itemname = "Samsung S21 Ultra";
                                       price = "₹ 20,000";
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+                                      Navigator.of(context).push(_createRoute());
                                     },
                                     child: Text("Buy Now"),
                                   ),
@@ -529,13 +521,10 @@ Widget itemCard4(document,context) {
                                   height: 45.0,
                                   child: RaisedButton(
                                     onPressed: () {
-                                      String itemname,price;
+
                                       itemname = "OnePlus 8 Pro";
                                       price = "₹ 20,000";
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => BuyPage(itemname: itemname,price: price,)));
+                                      Navigator.of(context).push(_createRoute());
                                     },
                                     child: Text("Buy Now"),
                                   ),
@@ -565,6 +554,25 @@ Widget itemCard4(document,context) {
         ),
       ),
     ),
+  );
+}
+
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => BuyPage(itemname: itemname,price: price),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
   );
 }
 
