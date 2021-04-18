@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:shop/testHome.dart';
 import 'Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shop/HomePage.dart';
+
 
 class Register extends StatefulWidget {
   @override

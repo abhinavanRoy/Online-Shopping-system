@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:shop/testHome.dart';
 
 var OrderId = random(1000, 5000);
 
@@ -26,7 +27,7 @@ class _OrderPlacedState extends State<OrderPlaced> {
               "https://cdn.dribbble.com/users/583807/screenshots/5187139/v5.gif",
             ),
             Positioned(
-              right: 125.0,
+              right: 120.0,
               top: 320.0,
               child: Text(
                 "ORDER ID: " + "$OrderId",
@@ -34,14 +35,47 @@ class _OrderPlacedState extends State<OrderPlaced> {
                   fontSize: 21,
                 ),
               ),
-            )
+            ),
+            Positioned(
+              right: 112.0,
+              top: 380.0,
+              child: SizedBox(
+                height: 40,
+                width: 160,
+                child: ElevatedButton(
+                  onPressed: (){
+                    Navigator.of(context).pushReplacement(_createRoute());
+                  },
+                  child: Text("Continue Shopping",
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => rootPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
 
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
 int random(min, max) {
   var rn = new Random();
   return min + rn.nextInt(max - min);
