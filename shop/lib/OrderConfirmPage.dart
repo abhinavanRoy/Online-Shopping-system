@@ -198,7 +198,7 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 4,
+                      height: 30,
                     ),
                     SizedBox(
                       height: 40,

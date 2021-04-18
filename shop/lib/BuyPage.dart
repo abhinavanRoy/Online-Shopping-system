@@ -16,7 +16,7 @@ class BuyPage extends StatefulWidget {
 }
 
 class _State extends State<BuyPage> {
-  String paymentMethod = "";
+  String paymentMethod;
   bool valuefirst = false;
   bool valuesecond = false;
   String itemname, price;
@@ -175,8 +175,13 @@ class _State extends State<BuyPage> {
                   onChanged: (bool value) {
                     setState(() {
                       this.valuefirst = value;
-                      paymentMethod = "Pay On Delivery";
+                      if(value) {
+                        paymentMethod = "Pay On Delivery";
+                      }
+                      else{
+                        paymentMethod = null;
 
+                      }
                     });
                   },
                 ),
@@ -186,10 +191,15 @@ class _State extends State<BuyPage> {
                   activeColor: Colors.red,
                   value: this.valuesecond,
                   onChanged: (bool value) {
-
                     setState(() {
                       this.valuesecond = value;
-                      paymentMethod = "Google pay";
+                      if(value) {
+                        paymentMethod = "Google pay";
+                      }
+                      else{
+                        paymentMethod = null;
+
+                      }
                     });
                   },
                 ),
@@ -208,34 +218,62 @@ class _State extends State<BuyPage> {
                         ),
                       ),
                       onPressed: () {
+
+
+
+
                         if (nameController.text.isNotEmpty &&
                             emailController.text.isNotEmpty &&
                             stateController.text.isNotEmpty &&
                             addressController.text.isNotEmpty &&
                             phoneNumberController.text.isNotEmpty &&
-                            pincodeController.text.isNotEmpty) {
+                            pincodeController.text.isNotEmpty && paymentMethod.isNotEmpty) {
                           Navigator.of(context).push(_createRoute());
-                        } else {
+                        } else if (nameController.text.isNotEmpty &&
+                            emailController.text.isNotEmpty &&
+                            stateController.text.isNotEmpty &&
+                            addressController.text.isNotEmpty &&
+                            phoneNumberController.text.isNotEmpty &&
+                            pincodeController.text.isNotEmpty && paymentMethod.isEmpty){
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                _buildCheckBoxPopupDialog(context),
+                          );
+                        }
+                        else{
                           showDialog(
                             context: context,
                             builder: (BuildContext context) =>
                                 _buildPopupDialog(context),
                           );
+
                         }
                       },
                     )),
               ],
             )));
   }
+
   Route _createRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => OrderConfirmPage(itemname: itemname, price: price, name: name, emailId: emailId, phoneNo: phoneNo, address: address, state: state, pincode: pincode, paymentMethod: paymentMethod),
+      pageBuilder: (context, animation, secondaryAnimation) => OrderConfirmPage(
+          itemname: itemname,
+          price: price,
+          name: nameController.text,
+          emailId: emailController.text,
+          phoneNo: phoneNumberController.text,
+          address: addressController.text,
+          state: stateController.text,
+          pincode: pincodeController.text,
+          paymentMethod: paymentMethod),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
         var curve = Curves.ease;
 
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -246,10 +284,29 @@ class _State extends State<BuyPage> {
   }
 }
 
-
-
-
 Widget _buildPopupDialog(BuildContext context) {
+  return new AlertDialog(
+    title: const Text('Entry error!'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("Fields cannot be empty"),
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: const Text('Close'),
+      ),
+    ],
+  );
+}
+
+Widget _buildCheckBoxPopupDialog(BuildContext context) {
   return new AlertDialog(
     title: const Text('Entry error!'),
     content: new Column(

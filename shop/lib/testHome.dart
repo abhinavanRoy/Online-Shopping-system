@@ -37,7 +37,7 @@ class _rootPageState extends State<rootPage> {
           padding: EdgeInsets.all(8.0),
 
           child: Scrollbar(
-
+            isAlwaysShown: false,
             controller: _scrollController,
             child: ListView(
               controller: _scrollController,
@@ -415,7 +415,7 @@ Widget itemCard3(document,context) {
                                   height: 45.0,
                                   child: RaisedButton(
                                     onPressed: () {
-                                    
+
                                       itemname = "Samsung S21 Ultra";
                                       price = "₹ 20,000";
                                       Navigator.of(context).push(_createRoute());
